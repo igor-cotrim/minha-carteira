@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  grid-area: CT;
-  background: #1b1f38;
+  ${({theme}) => css`
+    grid-area: CT;
+    color: ${theme.colors.white};
+    background: ${theme.colors.primary};
+  `}
 `;
