@@ -1,4 +1,4 @@
-import Dashboard from './pages/dashboard'
+import Layout from './components/layout'
 
 import { GlobalStyle } from './styles/global'
 
@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Dashboard />
+      <Layout />
     </>
   )
 }
