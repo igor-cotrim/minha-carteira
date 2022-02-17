@@ -1,16 +1,12 @@
 import styled, { css } from 'styled-components';
 
-type ContainerProps = {
-  color: string
-}
-
 type TagProps = {
   color: string
 }
 
-export const Container = styled.li<ContainerProps>`
-  ${({ color }) => css`
-    background: ${color};
+export const Container = styled.li`
+  ${({ theme }) => css`
+    background: ${theme.colors.tertiary};
     list-style: none;
     border-radius: 5px;
     margin: 10px 0;

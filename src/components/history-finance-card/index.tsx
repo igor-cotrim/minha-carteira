@@ -1,7 +1,6 @@
 import * as S from "./styles"
 
 type HistoryFinanceCardProps = {
-  cardColor: string
   tagColor: string
   title: string
   subtitle: string
@@ -9,14 +8,13 @@ type HistoryFinanceCardProps = {
 }
 
 const HistoryFinanceCard = ({
-  cardColor,
   tagColor,
   title,
   subtitle,
   amount
 }: HistoryFinanceCardProps) => {
   return (
-    <S.Container color={cardColor}>
+    <S.Container>
       <S.Tag color={tagColor} />
       <div>
         <span>{title}</span>
