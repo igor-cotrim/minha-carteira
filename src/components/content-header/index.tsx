@@ -1,14 +1,19 @@
 import * as S from "./styles"
 
-const ContentHeader = () => {
+type ContentHeaderProps = {
+  title: string
+  lineColor: string
+  children: React.ReactNode
+}
+
+const ContentHeader = ({ title, lineColor, children }: ContentHeaderProps) => {
   return (
     <S.Container>
-      <S.TitleContainer>
-        <h1>Titulo</h1>
+      <S.TitleContainer lineColor={lineColor}>
+        <h1>{title}</h1>
       </S.TitleContainer>
       <S.Controllers>
-        <button type="button">Botao a</button>
-        <button type="button">Botao b</button>
+        {children}
       </S.Controllers>
     </S.Container>
   )

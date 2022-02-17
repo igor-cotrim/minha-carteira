@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components'
 import Layout from './components/layout'
-import Dashboard from './pages/dashboard'
+import List from './pages/list'
 
 import { GlobalStyle } from './styles/global'
 import dark from './styles/themes/dark'
@@ -10,7 +10,7 @@ const App = () => {
     <ThemeProvider theme={dark}>
       <GlobalStyle />
       <Layout>
-        <Dashboard />
+        <List />
       </Layout>
     </ThemeProvider>
   )
