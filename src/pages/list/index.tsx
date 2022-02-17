@@ -24,6 +24,97 @@ const List = () => {
           subtitle="17/02/2022"
           amount="R$ 130,00"
         />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
+        <HistoryFinanceCard
+          cardColor="#313862"
+          tagColor="#e44c4e"
+          title="Conta de luz"
+          subtitle="17/02/2022"
+          amount="R$ 130,00"
+        />
       </S.Content>
     </S.Container>
   )
