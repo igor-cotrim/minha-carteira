@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import LogoSvg from '../../assets/svg-components/logo';
@@ -35,7 +36,7 @@ export const MenuContainer = styled.nav`
   margin-top: 50px;
 `;
 
-export const MenuItemLink = styled.a`
+export const MenuItemLink = styled(Link)`
   ${({ theme }) => css`
     display: flex;
     align-items: center;

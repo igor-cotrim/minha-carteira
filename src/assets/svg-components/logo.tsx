@@ -19,7 +19,7 @@ const LogoSvg = (props: any) => {
         width="23"
         height="42"
         fill="url(#pattern0)"
-        fill-opacity="0.4"
+        fillOpacity="0.4"
       />
       <defs>
         <pattern

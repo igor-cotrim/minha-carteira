@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components'
-import Layout from './components/layout'
-import List from './pages/list'
+
+import Routes from './routes'
 
 import { GlobalStyle } from './styles/global'
 import dark from './styles/themes/dark'
@@ -9,9 +9,7 @@ const App = () => {
   return (
     <ThemeProvider theme={dark}>
       <GlobalStyle />
-      <Layout>
-        <List />
-      </Layout>
+      <Routes />
     </ThemeProvider>
   )
 }
