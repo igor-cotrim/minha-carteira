@@ -1,9 +1,13 @@
 import * as S from "./styles"
 
-const Content = () => {
+type ContentProps = {
+  children: React.ReactElement
+}
+
+const Content = ({ children }: ContentProps) => {
   return (
     <S.Container>
-      <h1>Content</h1>
+      {children}
     </S.Container>
   )
 }

@@ -4,12 +4,18 @@ import MainHeader from "../main-header"
 
 import * as S from "./styles"
 
-const Layout = () => {
+type LeyoutProps = {
+  children: React.ReactElement
+}
+
+const Layout = ({ children }: LeyoutProps) => {
   return (
     <S.Grid>
-      <MainHeader/>
-      <Aside/>
-      <Content/>
+      <MainHeader />
+      <Aside />
+      <Content>
+        {children}
+      </Content>
     </S.Grid>
   )
 }
