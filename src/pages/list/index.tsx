@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
 
 import ContentHeader from "../../components/content-header"
 import HistoryFinanceCard from "../../components/history-finance-card"
 import SelectInput from "../../components/select-input"
 import { formatCurrency, formatDate } from "../../utils/formatData"
+import { listOfMonths } from "../../utils/months"
 
 import expenses from "../../repositories/expenses"
 import gains from "../../repositories/gains"
@@ -32,7 +34,7 @@ const List = () => {
   }, [type])
 
   useEffect(() => {
-    const filteredDate = listData.filter((item, index) => {
+    const filteredDate = listData.filter((item) => {
       const date = new Date(item.date)
       const month = String(date.getMonth() + 1)
       const year = String(date.getFullYear())
@@ -40,9 +42,9 @@ const List = () => {
       return month === monthSelected && year === yearSelected
     })
 
-    const formattedData = filteredDate.map((item, index) => {
+    const formattedData = filteredDate.map((item) => {
       return {
-        id: String(index),
+        id: uuidv4(),
         description: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
         type: item.type,
@@ -66,27 +68,34 @@ const List = () => {
     }
   }, [type])
 
-  const months = [
-    { value: 1, label: 'Janeiro' },
-    { value: 2, label: 'Fevereiro' },
-    { value: 3, label: 'Março' },
-    { value: 4, label: 'Abril' },
-    { value: 5, label: 'Maio' },
-    { value: 6, label: 'Junho' },
-    { value: 7, label: 'Julho' },
-    { value: 8, label: 'Agosto' },
-    { value: 9, label: 'Setembro' },
-    { value: 10, label: 'Outubro' },
-    { value: 11, label: 'Novembro' },
-    { value: 12, label: 'Dezembro' },
-  ]
+  const months = useMemo(() => {
+    return listOfMonths.map((month, index) => {
+      return {
+        value: index + 1,
+        label: month
+      }
+    })
+  }, [])
 
-  const years = [
-    { value: 2022, label: 2022 },
-    { value: 2021, label: 2021 },
-    { value: 2020, label: 2020 },
-    { value: 2019, label: 2019 },
-  ]
+  const years = useMemo(() => {
+    let uniqueYears: number[] = []
+
+    listData.forEach((item) => {
+      const date = new Date((item.date))
+      const year = date.getFullYear()
+
+      if (!uniqueYears.includes(year)) {
+        uniqueYears.push(year)
+      }
+    })
+
+    return uniqueYears.map((year) => {
+      return {
+        value: year,
+        label: year
+      }
+    })
+  }, [listData])
 
   return (
     <S.Container>

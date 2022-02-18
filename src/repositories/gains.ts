@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default [
-  { "description": "Salário", "amount": "1300.52", "type": "entrada", "frequency": "recorrente", "date": "2020-01-10" },
+  { "description": "Salário", "amount": "1300.52", "type": "entrada", "frequency": "recorrente", "date": "2022-01-10" },
   { "description": "Freela", "amount": "150.13", "type": "entrada", "frequency": "eventual", "date": "2020-01-17" },
   { "description": "Salário", "amount": "2500.23", "type": "entrada", "frequency": "recorrente", "date": "2020-02-10" },
   { "description": "Freela site", "amount": "900.23", "type": "entrada", "frequency": "eventual", "date": "2020-02-21" },
