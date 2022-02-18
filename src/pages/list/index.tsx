@@ -24,13 +24,23 @@ type DataProps = {
 const List = () => {
   const { type } = useParams()
   const [data, setData] = useState<DataProps[]>([])
+  const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
+  const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
 
   const listData = useMemo(() => {
     return type === 'balanco-entrada' ? gains : expenses
   }, [type])
 
   useEffect(() => {
-    const response = listData.map((item, index) => {
+    const filteredDate = listData.filter((item, index) => {
+      const date = new Date(item.date)
+      const month = String(date.getMonth() + 1)
+      const year = String(date.getFullYear())
+
+      return month === monthSelected && year === yearSelected
+    })
+
+    const formattedData = filteredDate.map((item, index) => {
       return {
         id: String(index),
         description: item.description,
@@ -38,16 +48,13 @@ const List = () => {
         type: item.type,
         frequency: item.frequency,
         dateFormatted: formatDate(item.date),
-        // dateFormatted: item.date,
         tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
       }
     })
 
-    setData(response)
-  }, [listData, data.length])
 
-  console.log(data);
-
+    setData(formattedData)
+  }, [listData, monthSelected, yearSelected])
 
   const headerParams = useMemo(() => {
     return type === 'balanco-entrada' ? {
@@ -60,12 +67,22 @@ const List = () => {
   }, [type])
 
   const months = [
+    { value: 1, label: 'Janeiro' },
+    { value: 2, label: 'Fevereiro' },
+    { value: 3, label: 'Março' },
+    { value: 4, label: 'Abril' },
+    { value: 5, label: 'Maio' },
+    { value: 6, label: 'Junho' },
     { value: 7, label: 'Julho' },
     { value: 8, label: 'Agosto' },
     { value: 9, label: 'Setembro' },
+    { value: 10, label: 'Outubro' },
+    { value: 11, label: 'Novembro' },
+    { value: 12, label: 'Dezembro' },
   ]
 
   const years = [
+    { value: 2022, label: 2022 },
     { value: 2021, label: 2021 },
     { value: 2020, label: 2020 },
     { value: 2019, label: 2019 },
@@ -77,8 +94,16 @@ const List = () => {
         title={headerParams.title}
         lineColor={headerParams.lineColor}
       >
-        <SelectInput options={months} />
-        <SelectInput options={years} />
+        <SelectInput
+          onChange={(e) => setMonthSelected(e.target.value)}
+          defaultValue={monthSelected}
+          options={months}
+        />
+        <SelectInput
+          onChange={(e) => setYearSelected(e.target.value)}
+          defaultValue={yearSelected}
+          options={years}
+        />
       </ContentHeader>
 
       <S.Filters>
@@ -97,7 +122,7 @@ const List = () => {
       </S.Filters>
 
       <S.Content>
-        {data.map((item) => (
+        {data && data.map((item) => (
           <HistoryFinanceCard
             key={item.id}
             tagColor={item.tagColor}
