@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import ContentHeader from "../../components/content-header"
 import HistoryFinanceCard from "../../components/history-finance-card"
 import SelectInput from "../../components/select-input"
+import { formatCurrency, formatDate } from "../../utils/formatData"
 
 import expenses from "../../repositories/expenses"
 import gains from "../../repositories/gains"
@@ -29,20 +30,24 @@ const List = () => {
   }, [type])
 
   useEffect(() => {
-    const response = listData.map((item) => {
+    const response = listData.map((item, index) => {
       return {
-        id: String(Math.random() * data.length),
+        id: String(index),
         description: item.description,
-        amountFormatted: item.amount,
+        amountFormatted: formatCurrency(Number(item.amount)),
         type: item.type,
         frequency: item.frequency,
-        dateFormatted: item.date,
+        dateFormatted: formatDate(item.date),
+        // dateFormatted: item.date,
         tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
       }
     })
 
     setData(response)
   }, [listData, data.length])
+
+  console.log(data);
+
 
   const headerParams = useMemo(() => {
     return type === 'balanco-entrada' ? {
