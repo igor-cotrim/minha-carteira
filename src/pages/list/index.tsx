@@ -1,14 +1,48 @@
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import ContentHeader from "../../components/content-header"
 import HistoryFinanceCard from "../../components/history-finance-card"
 import SelectInput from "../../components/select-input"
 
+import expenses from "../../repositories/expenses"
+import gains from "../../repositories/gains"
+
 import * as S from "./styled"
+
+type DataProps = {
+  id: string
+  description: string
+  amountFormatted: string
+  type: string
+  frequency: string
+  dateFormatted: string
+  tagColor: string
+}
 
 const List = () => {
   const { type } = useParams()
+  const [data, setData] = useState<DataProps[]>([])
+
+  const listData = useMemo(() => {
+    return type === 'balanco-entrada' ? gains : expenses
+  }, [type])
+
+  useEffect(() => {
+    const response = listData.map((item) => {
+      return {
+        id: String(Math.random() * data.length),
+        description: item.description,
+        amountFormatted: item.amount,
+        type: item.type,
+        frequency: item.frequency,
+        dateFormatted: item.date,
+        tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
+      }
+    })
+
+    setData(response)
+  }, [listData, data.length])
 
   const headerParams = useMemo(() => {
     return type === 'balanco-entrada' ? {
@@ -58,12 +92,15 @@ const List = () => {
       </S.Filters>
 
       <S.Content>
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Conta de luz"
-          subtitle="17/02/2022"
-          amount="R$ 130,00"
-        />
+        {data.map((item) => (
+          <HistoryFinanceCard
+            key={item.id}
+            tagColor={item.tagColor}
+            title={item.description}
+            subtitle={item.dateFormatted}
+            amount={item.amountFormatted}
+          />
+        ))}
       </S.Content>
     </S.Container>
   )
