@@ -34,7 +34,7 @@ const List = () => {
   const pageData = useMemo(() => {
     return type === 'balanco-entrada' ? {
       title: 'Entradas',
-      lineColor: '#f7931b',
+      lineColor: '#4e41f0',
       data: gains
     } : {
       title: 'Saídas',
