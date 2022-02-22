@@ -88,7 +88,7 @@ const List = () => {
     try {
       const parseMonth = Number(month)
       setMonthSelected(parseMonth)
-    } catch (error) {
+    } catch {
       throw new Error('invalid month value. Is accept 0 - 12.')
     }
   }
@@ -97,7 +97,7 @@ const List = () => {
     try {
       const parseYear = Number(year)
       setYearSelected(parseYear)
-    } catch (error) {
+    } catch {
       throw new Error('invalid year value. Is accept interger numbers.')
     }
   }
