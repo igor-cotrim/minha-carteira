@@ -1,11 +1,16 @@
 import { useMemo, useState } from "react"
 
 import ContentHeader from "../../components/content-header"
+import MessageBox from "../../components/message-box"
 import SelectInput from "../../components/select-input"
 import WalletBox from "../../components/wallet-box"
+import { listOfMonths } from "../../utils/months"
+
 import expenses from "../../repositories/expenses"
 import gains from "../../repositories/gains"
-import { listOfMonths } from "../../utils/months"
+
+// import HappySvg from '../../assets/svg-components/happy';
+import SadSvg from "../../assets/svg-components/sad"
 
 import * as S from "./styled"
 
@@ -95,6 +100,12 @@ const Dashboard = () => {
           footerLabel="Atualizado com base nas entradas e saídas"
           icon="arrowDown"
           color="#e44c4e"
+        />
+        <MessageBox
+          title="Muito bem!"
+          description="Sua carteira está positiva!"
+          footerText="Continue assim. Considere investir o seu saldo."
+          icon={<SadSvg />}
         />
       </S.Content>
     </S.Container>
