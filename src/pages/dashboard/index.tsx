@@ -101,6 +101,13 @@ const Dashboard = () => {
         footerText: "Verifique seus gastos e tente cortar algumas coisas desnecessárias.",
         icon: < SadSvg />
       }
+    } else if (totalGains === 0 && totalExpenses === 0) {
+      return {
+        title: "Opps!",
+        description: "Neste mês, não há registors de entradas ou saídas",
+        footerText: "Parece que você não fez nenhum registro no mês selecionado.",
+        icon: < GrinningSvg />
+      }
     } else if (totalBalance === 0) {
       return {
         title: "Ufaa!",
@@ -116,7 +123,7 @@ const Dashboard = () => {
         icon: < HappySvg />
       }
     }
-  }, [totalBalance])
+  }, [totalBalance, totalExpenses, totalGains])
 
   const relationExprensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses
