@@ -3,10 +3,10 @@ import {
   BarChart,
   Bar,
   Cell,
-  // Tooltip
+  Tooltip
 } from 'recharts'
 
-// import { formatCurrency } from '../../utils/formatData'
+import { formatCurrency } from '../../utils/formatData'
 
 import * as S from "./styles"
 
@@ -36,7 +36,7 @@ const BarChartBox = ({ data, title }: BarChartBoxProps) => (
     <S.SideRight>
       <ResponsiveContainer>
         <BarChart data={data}>
-          <Bar dataKey="amount">
+          <Bar dataKey="amount" name="Valor">
             {data.map((indicator) => (
               <Cell
                 key={indicator.name}
@@ -45,7 +45,10 @@ const BarChartBox = ({ data, title }: BarChartBoxProps) => (
               />
             ))}
           </Bar>
-          {/* <Tooltip formatter={(value: any) => formatCurrency(Number(value))} /> */}
+          <Tooltip
+            cursor={{ fill: 'none' }}
+            formatter={(value: any) => formatCurrency(Number(value))}
+          />
         </BarChart>
       </ResponsiveContainer>
     </S.SideRight>
