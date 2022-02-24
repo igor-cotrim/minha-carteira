@@ -7,6 +7,7 @@ import { GlobalStyle } from './styles/global'
 
 const App = () => {
   const { theme } = useTheme()
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

@@ -31,13 +31,23 @@ type ThemeProviderProps = {
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps)
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<ThemeProps>(dark)
+  const [theme, setTheme] = useState<ThemeProps>(() => {
+    const themeSaved = localStorage.getItem('@minha-carteira:theme')
+
+    if (themeSaved) {
+      return JSON.parse(themeSaved)
+    } else {
+      return dark
+    }
+  })
 
   const toggleTheme = () => {
     if (theme.title === 'dark') {
       setTheme(light)
+      localStorage.setItem('@minha-carteira:theme', JSON.stringify(light))
     } else {
       setTheme(dark)
+      localStorage.setItem('@minha-carteira:theme', JSON.stringify(dark))
     }
   }
 

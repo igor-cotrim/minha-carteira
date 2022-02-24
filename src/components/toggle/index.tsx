@@ -1,5 +1,3 @@
-// import Switch from "react-switch";
-
 import * as S from "./styles"
 
 type ToggleProps = {
