@@ -6,17 +6,15 @@ type ContentHeaderProps = {
   children: React.ReactNode
 }
 
-const ContentHeader = ({ title, lineColor, children }: ContentHeaderProps) => {
-  return (
-    <S.Container>
-      <S.TitleContainer lineColor={lineColor}>
-        <h1>{title}</h1>
-      </S.TitleContainer>
-      <S.Controllers>
-        {children}
-      </S.Controllers>
-    </S.Container>
-  )
-}
+const ContentHeader = ({ title, lineColor, children }: ContentHeaderProps) => (
+  <S.Container>
+    <S.TitleContainer lineColor={lineColor}>
+      <h1>{title}</h1>
+    </S.TitleContainer>
+    <S.Controllers>
+      {children}
+    </S.Controllers>
+  </S.Container>
+)
 
 export default ContentHeader

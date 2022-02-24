@@ -10,21 +10,19 @@ type SelectInputProps = {
   defaultValue?: string | number
 }
 
-const SelectInput = ({ options, onChange, defaultValue }: SelectInputProps) => {
-  return (
-    <S.Container>
-      <select onChange={onChange} defaultValue={defaultValue}>
-        {options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-          >
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </S.Container>
-  )
-}
+const SelectInput = ({ options, onChange, defaultValue }: SelectInputProps) => (
+  <S.Container>
+    <select onChange={onChange} defaultValue={defaultValue}>
+      {options.map((option) => (
+        <option
+          key={option.value}
+          value={option.value}
+        >
+          {option.label}
+        </option>
+      ))}
+    </select>
+  </S.Container>
+)
 
 export default SelectInput

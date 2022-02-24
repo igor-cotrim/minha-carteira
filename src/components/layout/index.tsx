@@ -8,16 +8,14 @@ type LeyoutProps = {
   children: React.ReactElement
 }
 
-const Layout = ({ children }: LeyoutProps) => {
-  return (
-    <S.Grid>
-      <MainHeader />
-      <Aside />
-      <Content>
-        {children}
-      </Content>
-    </S.Grid>
-  )
-}
+const Layout = ({ children }: LeyoutProps) => (
+  <S.Grid>
+    <MainHeader />
+    <Aside />
+    <Content>
+      {children}
+    </Content>
+  </S.Grid>
+)
 
 export default Layout
