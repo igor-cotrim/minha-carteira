@@ -15,6 +15,7 @@ import SadSvg from "../../assets/svg-components/sad"
 import GrinningSvg from "../../assets/svg-components/grinning"
 
 import * as S from "./styled"
+import HistoryBox from "../../components/history-box"
 
 const Dashboard = () => {
   const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1)
@@ -139,6 +140,57 @@ const Dashboard = () => {
     return data
   }, [totalGains, totalExpenses])
 
+  const historyData = useMemo(() => {
+    return listOfMonths
+      .map((_, month) => {
+        let amountEntry = 0
+        gains.forEach((gain) => {
+          const date = new Date(gain.date)
+          const gainMonth = date.getMonth()
+          const gainYear = date.getFullYear()
+
+          if (gainMonth === month && gainYear === yearSelected) {
+            try {
+              amountEntry = amountEntry + Number(gain.amount)
+            } catch {
+              throw new Error('amountEntry is invalid. amountEntry must be number')
+            }
+          }
+        })
+
+        let amountOutput = 0
+        expenses.forEach((expense) => {
+          const date = new Date(expense.date)
+          const expenseMonth = date.getMonth()
+          const expenseYear = date.getFullYear()
+
+          if (expenseMonth === month && expenseYear === yearSelected) {
+            try {
+              amountOutput = amountOutput + Number(expense.amount)
+            } catch {
+              throw new Error('amountOutput is invalid. amountOutput must be number')
+            }
+          }
+        })
+
+        return {
+          monthNumber: month,
+          month: listOfMonths[month].substring(0, 3),
+          amountEntry,
+          amountOutput
+        }
+      })
+      .filter((item) => {
+        const currentMonth = new Date().getMonth()
+        const currentYear = new Date().getFullYear()
+
+        return (
+          (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+          (yearSelected < currentYear)
+        )
+      })
+  }, [yearSelected])
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month)
@@ -200,6 +252,11 @@ const Dashboard = () => {
           icon={message.icon}
         />
         <PieChartBox data={relationExprensesVersusGains} />
+        <HistoryBox
+          data={historyData}
+          lineColorAmountEntry="#f7931b"
+          lineColorAmountOutput="#e44c4e"
+        />
       </S.Content>
     </S.Container>
   )

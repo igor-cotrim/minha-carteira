@@ -6,45 +6,31 @@ type LegendProps = {
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    width: 48%;
-    height: 260px;
-    margin: 10px 0;
+    width: 100%;
+    height: 400px;
     background: ${theme.colors.tertiary};
     color: ${theme.colors.white};
+    margin: 10px 0;
+    padding: 30px 20px;
     border-radius: 7px;
-    display: flex;
   `}
 `;
 
-export const SideLeft = styled.aside`
-  padding: 30px 20px;
+export const Header = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
   > h2 {
     margin-bottom: 20px;
+    padding-left: 20px;
   }
 `;
 
 export const LegendContainer = styled.ul`
-  ${({ theme }) => css`
-    list-style: none;
-    height: 175px;
-    padding-right: 15px;
-    overflow-y: scroll;
-
-    ::-webkit-scrollbar{
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background: ${theme.colors.secondary};
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-track{
-      background: ${theme.colors.tertiary};
-      border-radius: 10px;
-    }
-  `}
+  list-style: none;
+  display: flex;
+  padding-right: 20px;
 `;
 
 export const Legend = styled.li<LegendProps>`
@@ -52,6 +38,7 @@ export const Legend = styled.li<LegendProps>`
     display: flex;
     align-items: center;
     margin-bottom: 7px;
+    margin-left: 7px;
     
     > div {
       background: ${color};
@@ -67,10 +54,4 @@ export const Legend = styled.li<LegendProps>`
       margin-left: 5px;
     }
   `}
-`;
-
-export const SideRight = styled.main`
-  display: flex;
-  flex: 1;
-  justify-content: center;
 `;
