@@ -5,7 +5,7 @@ import SignIn from '../pages/sign-in';
 
 const AuthRoutes = () => (
   <Routes>
-    <Route path="*" element={<SignIn />} />
+    <Route path="/" element={<SignIn />} />
   </Routes>
 );
 
