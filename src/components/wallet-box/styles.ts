@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 type ContainerProps = {
   color: string
@@ -34,5 +35,42 @@ export const Container = styled.div<ContainerProps>`
       position: absolute;
       bottom: 10px;
     }
+
+    ${media.lessThan("medium")`
+      > span{
+        font-size: 14px;
+      }
+
+      > h1 {
+        word-wrap: break-word;
+        font-size: 22px;
+
+        strong {
+          display: inline-block;
+          width: 100%;
+          font-size: 16px;
+        }
+      }
+    `}
+
+    ${media.lessThan("small")`
+      width: 100%;
+
+      > h1 {
+        display: flex;
+      
+        strong {
+          position: initial;
+          width: auto;
+          font-size: 22px;
+
+          &::after{
+            display: inline-block;
+            content: '';
+            width: 1px;
+          }
+        }
+      }
+    `}
   `}
 `;

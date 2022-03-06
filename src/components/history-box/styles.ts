@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 type LegendProps = {
   color: string
@@ -25,6 +26,10 @@ export const Header = styled.header`
     margin-bottom: 20px;
     padding-left: 20px;
   }
+
+  ${media.lessThan("large")`
+    flex-direction: column;
+  `}
 `;
 
 export const LegendContainer = styled.ul`
@@ -38,7 +43,7 @@ export const Legend = styled.li<LegendProps>`
     display: flex;
     align-items: center;
     margin-bottom: 7px;
-    margin-left: 7px;
+    margin-left: 18px;
     
     > div {
       background: ${color};
@@ -53,5 +58,12 @@ export const Legend = styled.li<LegendProps>`
     > span {
       margin-left: 5px;
     }
+
+    ${media.lessThan("large")`
+      > div {
+        width: 30px;
+        height: 30px;
+      }
+    `}
   `}
 `;

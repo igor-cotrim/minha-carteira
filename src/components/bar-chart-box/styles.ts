@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 type LegendProps = {
   color: string
@@ -12,6 +13,13 @@ export const Container = styled.div`
     background: ${theme.colors.tertiary};
     border-radius: 7px;
     display: flex;
+    
+    ${media.lessThan('large')`
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    `}
   `}
 `;
 
@@ -45,6 +53,11 @@ export const LegendContainer = styled.ul`
       background: ${theme.colors.tertiary};
       border-radius: 10px;
     }
+
+    ${media.lessThan('large')`
+      display: flex;
+      height: auto;
+    `}
   `}
 `;
 
@@ -68,6 +81,15 @@ export const Legend = styled.li<LegendProps>`
     > span {
       margin-left: 5px;
     }
+
+    ${media.lessThan('large')`
+      > div {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+        line-height: 30px;
+      }
+    `}
   `}
 `;
 

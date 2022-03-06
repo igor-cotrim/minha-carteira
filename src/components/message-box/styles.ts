@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   ${({ theme }) => css`
@@ -22,5 +23,32 @@ export const Container = styled.div`
     > header p {
       font-size: 18px;
     }
+
+    ${media.lessThan("medium")`
+      width: 100%;
+
+      > header h1 {
+        font-size: 24px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      > header p,
+      > footer span {
+        font-size: 14px;
+      }
+    `}
+
+    ${media.lessThan("small")`
+      width: 100%;
+      height: auto;
+
+      > header p {
+        margin-bottom: 15px
+      }
+    `}
   `}
 `;

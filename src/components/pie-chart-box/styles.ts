@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 type LegendProps = {
   color: string
@@ -13,6 +14,11 @@ export const Container = styled.div`
     color: ${theme.colors.white};
     border-radius: 7px;
     display: flex;
+
+    ${media.lessThan("medium")`
+      display: flex;
+      width: 100%;
+    `}
   `}
 `;
 
@@ -22,6 +28,20 @@ export const SideLeft = styled.aside`
   > h2 {
     margin-bottom: 20px;
   }
+
+  ${media.lessThan("large")`
+    padding: 0 15px 15px;
+    margin-bottom: 7px;
+
+    > h2 {
+      margin-top: 15px;
+      margin-bottom: 7px;
+    }
+  `}
+
+  ${media.lessThan("small")`
+    padding: 15px;
+  `}
 `;
 
 export const LegendContainer = styled.ul`
@@ -44,6 +64,11 @@ export const LegendContainer = styled.ul`
       background: ${theme.colors.tertiary};
       border-radius: 10px;
     }
+
+    ${media.lessThan("large")`
+      display: flex;
+      flex-direction: column;
+    `}
   `}
 `;
 
@@ -66,6 +91,21 @@ export const Legend = styled.li<LegendProps>`
     > span {
       margin-left: 5px;
     }
+
+    ${media.lessThan("large")`
+      font-size: 14px;
+      margin: 3px 0;
+
+      > div {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+      }
+
+      > span {
+        margin-left: 7px;
+      }
+    `}
   `}
 `;
 
@@ -73,4 +113,8 @@ export const SideRight = styled.main`
   display: flex;
   flex: 1;
   justify-content: center;
+
+  ${media.lessThan("large")`
+    height: 100%;
+  `}
 `;
