@@ -3,6 +3,7 @@ import media from 'styled-media-query';
 
 export const Grid = styled.div`
   height: 100vh;
+  min-width: 315px;
   display: grid;
   grid-template-columns: 250px auto;
   grid-template-rows: 70px auto;

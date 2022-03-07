@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 type TitleContainerProps = {
   lineColor: string
@@ -7,8 +8,13 @@ type TitleContainerProps = {
 export const Container = styled.div`
   width: 100%;
   display: flex;
+  
   justify-content: space-between;
   margin-bottom: 25px;
+
+  ${media.lessThan("small")`
+    flex-direction: column;
+  `}
 `;
 
 export const TitleContainer = styled.div<TitleContainerProps>`
@@ -24,9 +30,25 @@ export const TitleContainer = styled.div<TitleContainerProps>`
         border-bottom: 10px solid ${lineColor};
       }
     }
+
+    ${media.lessThan("small")`
+      > h1 {
+        font-size: 22px;
+
+        &::after{
+          border-bottom: 5px solid ${lineColor};
+        }
+      }
+    `}
   `}
 `;
 
 export const Controllers = styled.div`
   display: flex;
+  
+  ${media.lessThan("small")`
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  `}
 `;

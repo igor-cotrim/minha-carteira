@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     grid-area: MH;
     background: ${theme.colors.secondary};
     display: flex;
@@ -12,15 +12,11 @@ export const Container = styled.div`
   `}
 `;
 export const Profile = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.white};
   `}
 `;
-export const Welcome = styled.h3`
-  ${({theme}) => css`
-  `}
-`;
-export const Username = styled.span`
-  ${({theme}) => css`
-  `}
-`;
+
+export const Welcome = styled.h3``;
+
+export const Username = styled.span``;
