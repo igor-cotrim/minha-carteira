@@ -1,9 +1,23 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import media from 'styled-media-query';
 
 type ContainerProps = {
   color: string
 }
+
+const animate = keyframes`
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50%{     
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div<ContainerProps>`
   ${({ theme, color }) => css`
@@ -16,6 +30,7 @@ export const Container = styled.div<ContainerProps>`
     border-radius: 7px;
     padding: 10px 20px;
     overflow: hidden;
+    animation: ${animate} 0.5s;
 
     > svg{
       position: absolute;

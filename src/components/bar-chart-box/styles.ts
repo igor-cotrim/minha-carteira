@@ -1,9 +1,23 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import media from 'styled-media-query';
 
 type LegendProps = {
   color: string
 }
+
+const animate = keyframes`
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50%{     
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   ${({ theme }) => css`
@@ -13,6 +27,7 @@ export const Container = styled.div`
     background: ${theme.colors.tertiary};
     border-radius: 7px;
     display: flex;
+    animation: ${animate} 0.5s;
     
     ${media.lessThan('large')`
       display: flex;

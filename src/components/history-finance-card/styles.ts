@@ -1,8 +1,22 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 type TagProps = {
   color: string
 }
+
+const animate = keyframes`
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50%{     
+    opacity: .3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.li`
   ${({ theme }) => css`
@@ -17,6 +31,7 @@ export const Container = styled.li`
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
+    animation: ${animate} 0.5s ease;
 
     &:hover{
       opacity: 0.7;
